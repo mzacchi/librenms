@@ -15,7 +15,7 @@
             <button class="btn btn-default pull-right" type="submit" id="ToggleLogon">@lang('Logon')</button>
             </div>
         </div>
-        <div class="panel panel-default panel-condensed">
+        <x-panel>
             <div class="table-responsive">
                 <table class="table table-condensed">
                     <tr>
@@ -37,7 +37,7 @@
                     @endforeach
                 </table>
             </div>
-        </div>
+        </x-panel>
     </div>
 
     <div id="public-logon" style="display:none;">
@@ -81,11 +81,11 @@
 @section('javascript')
             <script class="code" type="text/javascript">
                 $(document).ready(function () {
-                    $("#ToggleLogon").click(function () {
+                    $("#ToggleLogon").on("click", function () {
                         document.getElementById('public-logon').style.display = "block";
                         document.getElementById('public-status').style.display = "none";
                     });
-                    $("#ToggleStatus").click(function () {
+                    $("#ToggleStatus").on("click", function () {
                         document.getElementById('public-logon').style.display = "none";
                         document.getElementById('public-status').style.display = "block";
                     });

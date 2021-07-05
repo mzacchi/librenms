@@ -3,7 +3,7 @@ path: blob/master/doc/
 
 # Setting up RRDCached
 
-This document will explain how to setup RRDCached for LibreNMS.
+This document will explain how to set up RRDCached for LibreNMS.
 
 Since version 1.5, rrdtool / rrdcached now supports creating rrd files
 over rrdcached. If you have rrdcached 1.5.5 or above, you can also
@@ -12,10 +12,10 @@ tune over rrdcached. To enable this set the following config:
 ```php
 $config['rrdtool_version'] = '1.5.5';
 ```
-This setting has to be the exact version of rrdtool you are running. 
+This setting has to be the exact version of rrdtool you are running.
 
 NOTE: This feature requires your client version of rrdtool to be 1.5.5
-or over, in addition to your rrdcached version.
+or newer, in addition to your rrdcached version.
 
 # Distributed Poller Support Matrix
 
@@ -24,10 +24,10 @@ Shared FS: Is a shared filesystem required?
 Features: Supported features in the version indicated.
 
 ```
-          G = Graphs.
-          C = Create RRD files.
-          U = Update RRD files.
-          T = Tune RRD files.
+G = Graphs.
+C = Create RRD files.
+U = Update RRD files.
+T = Tune RRD files.
 ```
 
 | Version | Shared FS | Features |
@@ -43,12 +43,12 @@ so you can view the disk I/O usage delta.
 
 # Installation Manual for
 
-1. [RRDCached installation Ubuntu 16](#RRDCached-installation-Ubuntu-16)
-1. [RRDCached installation Debian Buster](#RRDCached-installation-Debian-Buster)
-1. [RRDCached installation Debian Stretch](#RRDCached-installation-Debian-Stretch)
-1. [RRDCached installation CentOS 7](#RRDCached-installation-CentOS-7)
-1. [RRDCached installation CentOS 6](#RRDCached-installation-CentOS-6)
-1. [Securing RRCached](#Securing-RRCached)
+1. [RRDCached installation Ubuntu 16](#rrdcached-installation-ubuntu-16)
+1. [RRDCached installation Debian Buster](#rrdcached-installation-debian-buster)
+1. [RRDCached installation Debian Stretch](#rrdcached-installation-debian-stretch)
+1. [RRDCached installation CentOS 7 or 8](#rrdcached-installation-centos-7-or-8)
+1. [RRDCached installation CentOS 6](#rrdcached-installation-centos-6)
+1. [Securing RRCached](#securing-rrcached)
 
 
 ## RRDCached installation Ubuntu 16
@@ -129,7 +129,7 @@ chown librenms:librenms /var/lib/rrdcached/journal/
 4: Restart the rrdcached service
 
 ```bash
-    systemctl restart rrdcached.service
+systemctl restart rrdcached.service
 ```
 
 5: Edit /opt/librenms/config.php to include:
@@ -187,7 +187,7 @@ chown librenms:librenms /var/lib/rrdcached/journal/
 4: Restart the rrdcached service
 
 ```bash
-    systemctl restart rrdcached.service
+systemctl restart rrdcached.service
 ```
 
 5: Edit /opt/librenms/config.php to include:
@@ -210,7 +210,7 @@ $config['rrdcached'] = "IPADDRESS:42217";
 
 NOTE: change IPADDRESS to the ip the rrdcached server is listening on.
 
-## RRDCached installation CentOS 7
+## RRDCached installation CentOS 7 or 8
 
 1: Create `/etc/systemd/system/rrdcached.service` with this content:
 
@@ -285,7 +285,7 @@ $config['rrdcached']    = "unix:/run/rrdcached.sock";
 Check to see if the graphs are being drawn in LibreNMS. This might take a few minutes.
 After at least one poll cycle (5 mins), check the LibreNMS disk I/O performance delta.
 Disk I/O can be found under the menu Devices>All Devices>[localhost
-hostname]>Health>Disk I/O.
+hostname](../Installation/Installation-CentOS-7-Apache.md)>Health>Disk I/O.
 
 Depending on many factors, you should see the Ops/sec drop by ~30-40%.
 
@@ -293,5 +293,3 @@ Depending on many factors, you should see the Ops/sec drop by ~30-40%.
 
 Please see [RRDCached Security](RRDCached-Security.md)
 
-[1]: http://librenms.readthedocs.org/Installation/Installation-CentOS-7-Apache/
-"Add localhost to LibreNMS"

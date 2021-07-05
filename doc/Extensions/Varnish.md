@@ -14,13 +14,13 @@ decrease page load times significantly.
 
 # Simplified block diagram of an Apache HTTP server with Varnish 4.0 Reverse Proxy
 
-![Block Diagram 1](http://docs.librenms.org/img/varnish_block.png)
+![Block Diagram 1](/img/varnish_block.png)
 
 # CentOS 7 Varnish Installation
 
 In this example we will assume your Apache 2.4.X HTTP server is working and
 configured to process HTTP requests on port 80.  If not, please see
-[Installing LibreNMS](http://librenms.readthedocs.org/Installation/Installing-CentOS-7-Apache)
+[Installing LibreNMS](../Installation/Installation-CentOS-7-Apache.md)
 
 # Install Varnish 4.0 RPM
 
@@ -139,7 +139,7 @@ DAEMON_OPTS="-p thread_pool_min=5 -p thread_pool_max=500 -p thread_pool_timeout=
 
 Edit librenms.conf and modify the Apache Virtual Host listening port.
 
-- Modify:`<VirtualHost *:80>` to: `<VirtualHost *:8080>`
+- Modify: `<VirtualHost *:80>` to `<VirtualHost *:8080>`
 
 ```bash
 vim /etc/httpd/conf.d/librenms.conf
@@ -147,7 +147,7 @@ vim /etc/httpd/conf.d/librenms.conf
 
 Varnish can not share a port with Apache. Change the Apache listening port to 8080.
 
-- Modify:`Listen 80` to:`Listen 8080`
+- Modify: `Listen 80` to `Listen 8080`
 
 ```bash
 vim /etc/httpd/conf/httpd.conf

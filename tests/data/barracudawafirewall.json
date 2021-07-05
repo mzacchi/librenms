@@ -6,26 +6,8 @@
                     "sysName": "<private>",
                     "sysObjectID": ".1.3.6.1.4.1.8072.3.2.10",
                     "sysDescr": "Barracuda Web Application Firewall",
-                    "sysContact": null,
-                    "version": null,
-                    "hardware": null,
-                    "features": null,
-                    "os": "barracudawafirewall",
-                    "type": "firewall",
-                    "serial": null,
-                    "icon": "barracuda.svg",
-                    "location": null
-                }
-            ]
-        },
-        "poller": {
-            "devices": [
-                {
-                    "sysName": "<private>",
-                    "sysObjectID": ".1.3.6.1.4.1.8072.3.2.10",
-                    "sysDescr": "Barracuda Web Application Firewall",
                     "sysContact": "<private>",
-                    "version": "10.0.1.003 ",
+                    "version": "10.0.1.003",
                     "hardware": null,
                     "features": null,
                     "os": "barracudawafirewall",
@@ -35,7 +17,8 @@
                     "location": "<private>"
                 }
             ]
-        }
+        },
+        "poller": "matches discovery"
     },
     "ports": {
         "discovery": {

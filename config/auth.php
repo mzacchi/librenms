@@ -49,6 +49,12 @@ return [
             'provider' => 'legacy',
         ],
 
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+
         'token' => [
             'driver' => 'token_driver',
             'provider' => 'token_provider',
@@ -79,10 +85,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-         'legacy' => [
-             'driver' => 'legacy',
-             'model' => App\Models\User::class,
-         ],
+        'legacy' => [
+            'driver' => 'legacy',
+            'model' => App\Models\User::class,
+        ],
+
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*

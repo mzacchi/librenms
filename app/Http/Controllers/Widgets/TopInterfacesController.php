@@ -15,10 +15,9 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * @package    LibreNMS
- * @link       http://librenms.org
+ * @link       https://www.librenms.org
  * @copyright  2018 Tony Murray
  * @author     Tony Murray <murraytony@gmail.com>
  */
@@ -38,6 +37,7 @@ class TopInterfacesController extends WidgetController
         'time_interval' => 15,
         'interface_filter' => null,
         'device_group' => null,
+        'port_group' => null,
     ];
 
     /**
@@ -61,6 +61,9 @@ class TopInterfacesController extends WidgetController
             }, function ($query) {
                 $query->has('device');
             })
+            ->when($data['port_group'], function ($query) use ($data) {
+                $query->inPortGroup($data['port_group']);
+            })
             ->orderByRaw('SUM(LEAST(ifInOctets_rate, 9223372036854775807) + LEAST(ifOutOctets_rate, 9223372036854775807)) DESC')
             ->limit($data['interface_count']);
 
@@ -72,7 +75,6 @@ class TopInterfacesController extends WidgetController
 
         return view('widgets.top-interfaces', $data);
     }
-
 
     public function getSettingsView(Request $request)
     {

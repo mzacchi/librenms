@@ -15,12 +15,7 @@
 
             @config('twofactor')
             <br/>
-            <div class="panel panel-default col-sm-offset-3">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Two-Factor Authentication</h3>
-                </div>
-                <div class="panel-body">
-
+            <x-panel title="{{ __('Two-Factor Authentication') }}" class="col-sm-offset-3">
                 @if($twofactor_enabled)
                     @if($twofactor_locked)
                         <div class="form-group" id="twofactor-unlock-form">
@@ -34,8 +29,7 @@
                 @else
                     <p>@lang('No TwoFactor key generated for this user, Nothing to do.')</p>
                 @endif
-                </div>
-            </div>
+            </x-panel>
             @endconfig
 
             <div class="form-group">
@@ -52,7 +46,7 @@
 @section('javascript')
     <script type="application/javascript">
         $(document).ready(function () {
-            $('#twofactor-unlock').click(function () {
+            $('#twofactor-unlock').on("click", function () {
                 console.log('unlock');
                 $.ajax({
                     type: 'POST',
@@ -72,7 +66,7 @@
                 });
             });
 
-            $('#twofactor-disable').click(function () {
+            $('#twofactor-disable').on("click", function () {
                 $.ajax({
                     type: 'DELETE',
                     url: '{{ route('2fa.delete', ['user' => $user->user_id]) }}',
